@@ -32,10 +32,6 @@ Scikit-learn
 
 XGBoost
 
-LightGBM
-
-CatBoost
-
 🔹 Frontend
 
 HTML
