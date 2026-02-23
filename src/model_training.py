@@ -1,9 +1,9 @@
 import pickle
 import os
-from xgboost import XGBRegressor
+# from xgboost import XGBRegressor,LinearRegression
 from sklearn.metrics import r2_score
 from sklearn.model_selection import train_test_split
-
+from sklearn.linear_model import LinearRegression
 def train_model(df):
 
     features = [
@@ -28,14 +28,15 @@ def train_model(df):
     y_train = y.iloc[:split_index]
     y_test = y.iloc[split_index:]
 
-    model = XGBRegressor(
-        n_estimators=900,
-        learning_rate=0.03,
-        max_depth=4,
-        subsample=0.9,
-        colsample_bytree=0.9,
-        random_state=42
-    )
+    # model = XGBRegressor(
+    #     n_estimators=900,
+    #     learning_rate=0.03,
+    #     max_depth=4,
+    #     subsample=0.9,
+    #     colsample_bytree=0.9,
+    #     random_state=42
+    # )
+    model=LinearRegression()
 
     model.fit(X_train, y_train)
 
@@ -43,7 +44,7 @@ def train_model(df):
     print("R2 Score:", r2_score(y_test, y_pred))
 
     os.makedirs("models", exist_ok=True)
-    pickle.dump(model, open("models/xgb_model.pkl", "wb"))
+    pickle.dump(model, open("models/lr_model.pkl", "wb"))
 
     print("Model saved successfully")
 

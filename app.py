@@ -13,7 +13,7 @@ app = Flask(__name__)
 df = load_and_clean_data("data_100000_records_daily.csv")
 df = create_features(df)
 train_model(df)
-model_path = os.path.join("models", "xgb_model.pkl")
+model_path = os.path.join("models", "lr_model.pkl")
 model = pickle.load(open(model_path, "rb"))
 
 
